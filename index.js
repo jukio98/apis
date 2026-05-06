@@ -18,6 +18,7 @@ let cadastro = [];
 app.get("/", (req, res) => {
     res.send("API funcionando 🚀");
 });
+app.get("/cadastro", (req, res) => { res.json(cadastro); });
 // 👉 Rota POST (cadastrar usuário)
 app.post("/cadastro", (req, res) => {
     const { nome, senha } = req.body;
