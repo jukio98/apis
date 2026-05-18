@@ -37,21 +37,21 @@ res.json(jogadores_vacuo)
 let pos_julio=[];
 app.post("/julio", (req, res) => {
 
-const { nome, senha } = req.body;
+const { nome} = req.body;
 
-if (!nome || !senha) {
+if (!nome) {
 return res.status(400).json({
 erro: "Nome e senha obrigatórios"
 });
 }
 
-const novo = {posJ};
+const posJ = {nome};
 
-pos_julio.push(novo);
+pos_julio.push(posJ);
 
 res.status(201).json({
-mensagem: "Usuário cadastrado!",
-usuario: novo
+mensagem: "Usuário encontrado!",
+usuario:posJ
 });
 
 });
