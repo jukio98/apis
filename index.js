@@ -35,26 +35,24 @@ res.json(jogadores_vacuo)
 })
 //////////poos_julio
 let pos_julio=[];
+
 app.post("/julio", (req, res) => {
 
-const { nome} = req.body;
+const { nome, localizacao } = req.body;
 
-if (!nome) {
-return res.status(400).json({
-erro: "Nome e senha obrigatórios"
-});
-}
-
-const posJ = {nome};
+const posJ = {
+nome,
+localizacao
+};
 
 pos_julio.push(posJ);
 
-res.status(201).json({
-mensagem: "Usuário encontrado!",
-usuario:posJ
-});
+res.json({
+ok:true,
+dados:posJ
+})
 
-});
+})
 ///////////////////////////////////////
 
 
