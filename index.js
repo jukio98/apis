@@ -13,8 +13,23 @@ app.use(express.json());
 // "banco de dados" em memória
 let cadastro = [];
 
-// 👉 Rota GET (ver usuários)
+////joguinho_Vacuo
+let jogadores_vacuo= {}
 
+app.post("/pos", (req,res)=>{
+
+const {id,x,y,sprite,dir,msg} = req.body
+
+jogadores_vacuo[id] = {
+x,y,sprite,dir,msg,
+tempo:Date.now()
+}
+
+res.json({ok:true})
+
+})
+
+// 👉 Rota GET (ver usuários)
 app.get("/", (req, res) => {
     res.send("API funcionando 🚀");
 });
