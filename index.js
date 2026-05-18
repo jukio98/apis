@@ -4,17 +4,16 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// 🔥 permite CORS (qualquer origem)
 app.use(cors());
-
-// 🔥 permite receber JSON no body
 app.use(express.json());
 
-// "banco de dados" em memória
 let cadastro = [];
 
-////joguinho_Vacuo
-let jogadores_vacuo= {}
+let jogadores_vacuo = {}
+
+///////////////////////////////
+//// GAME ONLINE
+///////////////////////////////
 
 app.post("/pos", (req,res)=>{
 
@@ -28,43 +27,58 @@ tempo:Date.now()
 res.json({ok:true})
 
 })
-app.get("/players", (req,res)=>{
+
+app.get("/players",(req,res)=>{
 
 res.json(jogadores_vacuo)
 
 })
-//////////////////////////////////////
-// 👉 Rota GET (ver usuários)
+
+///////////////////////////////
+//// CADASTRO
+///////////////////////////////
+
 app.get("/", (req, res) => {
-    res.send("API funcionando 🚀");
+res.send("API do Julio _ _ (J) _ _funcionando 🚀");
 });
-app.get("/cadastro", (req, res) => { res.json(cadastro); });
-// 👉 Rota POST (cadastrar usuário)
+
+app.get("/cadastro", (req, res) => {
+res.json(cadastro);
+});
+
 app.post("/cadastro", (req, res) => {
-    const { nome, senha } = req.body;
 
-    if (!nome || !senha) {
-        return res.status(400).json({ erro: "Nome e senha obrigatórios" });
-    }
+const { nome, senha } = req.body;
 
-    // verifica se já existe
-    const existe = cadastro.find(u => u.nome === nome);
+if (!nome || !senha) {
+return res.status(400).json({
+erro: "Nome e senha obrigatórios"
+});
+}
 
-    if (existe) {
-        return res.status(400).json({ erro: "Usuário já existe" });
-    }
+const existe = cadastro.find(
+u => u.nome === nome
+);
 
-    const novo = { nome, senha };
+if (existe) {
+return res.status(400).json({
+erro: "Usuário já existe"
+});
+}
 
-    cadastro.push(novo);
+const novo = { nome, senha };
 
-    res.status(201).json({
-        mensagem: "Usuário cadastrado!",
-        usuario: novo
-    });
+cadastro.push(novo);
+
+res.status(201).json({
+mensagem: "Usuário cadastrado!",
+usuario: novo
 });
 
-// iniciar servidor
+});
+
 app.listen(PORT, () => {
-    console.log(`Servidor rodando em http://localhost:${PORT}`);
+console.log(
+`Servidor rodando em http://localhost:${PORT}`
+);
 });
