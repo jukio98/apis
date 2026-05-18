@@ -28,7 +28,12 @@ tempo:Date.now()
 res.json({ok:true})
 
 })
+app.get("/players", (req,res)=>{
 
+res.json(jogadores_vacuo)
+
+})
+//////////////////////////////////////
 // 👉 Rota GET (ver usuários)
 app.get("/", (req, res) => {
     res.send("API funcionando 🚀");
