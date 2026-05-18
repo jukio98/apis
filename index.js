@@ -53,6 +53,12 @@ dados:posJ
 })
 
 })
+
+app.get("/julio",(req,res)=>{
+
+res.json(pos_julio)
+
+})
 ///////////////////////////////////////
 
 
