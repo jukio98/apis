@@ -33,6 +33,32 @@ app.get("/players",(req,res)=>{
 res.json(jogadores_vacuo)
 
 })
+//////////poos_julio
+let pos_julio=[];
+app.post("/julio", (req, res) => {
+
+const { nome, senha } = req.body;
+
+if (!nome || !senha) {
+return res.status(400).json({
+erro: "Nome e senha obrigatórios"
+});
+}
+
+const novo = {posJ};
+
+pos_julio.push(novo);
+
+res.status(201).json({
+mensagem: "Usuário cadastrado!",
+usuario: novo
+});
+
+});
+///////////////////////////////////////
+
+
+
 
 ///////////////////////////////
 //// CADASTRO
