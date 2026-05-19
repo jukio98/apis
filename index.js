@@ -66,9 +66,10 @@ let mens_silvas=[];
 let mens={};
 app.post("/mens_silvas", (req, res) => {
 
-const {mensagem } = req.body;
+const {usuario,mensagem } = req.body;
 
 const mens = {
+usuario,
 mensagem
 };
 
