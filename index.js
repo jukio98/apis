@@ -81,7 +81,7 @@ dados:mens
 
 })
 
-app.get("/mes_silvas",(req,res)=>{
+app.get("/mens_silvas",(req,res)=>{
 
 res.json(mens_silvas)
 
