@@ -63,7 +63,7 @@ res.json(pos_julio)
 
 //////////mens_sivas
 let mens_silvas=[];
-
+let mens={};
 app.post("/mens_silvas", (req, res) => {
 
 const {mensagen } = req.body;
