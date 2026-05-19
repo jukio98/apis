@@ -87,6 +87,43 @@ app.get("/mens_silvas",(req,res)=>{
 res.json(mens_silvas)
 
 })
+
+let online_mens = {};
+
+//////////ONLINE_MENS_SILVAS///
+app.post("/online_mens_silvas",(req,res)=>{
+
+const {usuario} = req.body;
+
+online_mens[usuario] = Date.now();
+
+res.json({
+ok:true
+});
+
+app.get("/online_mens_silvas",(req,res)=>{
+
+let agora = Date.now();
+
+//////////////////////////////////////////////////
+// REMOVE INATIVOS
+//////////////////////////////////////////////////
+
+for(let nome in online){
+
+if(agora - online_mens[nome] > 10000){
+
+delete online_mens[nome];
+
+}
+
+}
+
+res.json(Object.keys(online_mens));
+
+});
+
+});
 ///////////////////////////////////////
 
 
