@@ -61,6 +61,33 @@ res.json(pos_julio)
 })
 ///////////////////////////////////////
 
+//////////mens_sivas
+let mens_silvas=[];
+
+app.post("/mens_silvas", (req, res) => {
+
+const {mensagen } = req.body;
+
+const mens = {
+mensagem
+};
+
+mens_silvas.push(mens);
+
+res.json({
+ok:true,
+dados:mens
+})
+
+})
+
+app.get("/mes_silvas",(req,res)=>{
+
+res.json(mens_silvas)
+
+})
+///////////////////////////////////////
+
 
 
 
