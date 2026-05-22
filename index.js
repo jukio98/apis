@@ -148,9 +148,10 @@ const {id,x,y,cor} = req.body;
 
 jogadores[id] = {
   id,
-x,
-y,
-cor
+  x,
+  y,
+  cor,
+  tempo:Date.now()
 };
 
 res.json({
@@ -160,6 +161,18 @@ ok:true
 });
 
 app.get("/dedos",(req,res)=>{
+
+let agora = Date.now();
+
+for(let id in jogadores){
+
+    if(agora - jogadores[id].tempo > 5000){
+
+        delete jogadores[id];
+
+    }
+
+}
 
 res.json(Object.values(jogadores));
 
