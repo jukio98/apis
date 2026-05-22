@@ -147,6 +147,7 @@ app.post("/dedos", (req, res) => {
 const {id,x,y,cor} = req.body;
 
 jogadores[id] = {
+  id,
 x,
 y,
 cor
