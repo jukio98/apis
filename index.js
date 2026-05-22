@@ -140,33 +140,29 @@ res.json(Object.keys(online_mens));
 ///////////test_multiplayer
 
 
-let jogadores=[];
-let jogador={};
+let jogadores = {};
+
 app.post("/dedos", (req, res) => {
 
-const {x,y,cor} = req.body;
+const {id,x,y,cor} = req.body;
 
-const jogador = {
+jogadores[id] = {
 x,
 y,
 cor
 };
 
-jogadores.push(jogador);
-
 res.json({
-ok:true,
-dados:jogador
-})
+ok:true
+});
 
-})
+});
 
 app.get("/dedos",(req,res)=>{
 
-res.json(jogadores)
+res.json(Object.values(jogadores));
 
-})
-
+});
 
 
 
