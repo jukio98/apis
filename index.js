@@ -181,7 +181,51 @@ res.json(Object.values(jogadores));
 
 
 
-/////////////
+/////////////Teste de usuário permitidos///
+
+
+
+let permitidos = [
+{
+nome:"Julio Cesar",
+senha:"0947"
+},
+];
+
+app.post("/perm", (req, res) => {
+
+const {nome, senha} = req.body;
+
+// procura usuário
+const usuario = permitidos.find(u =>
+u.nome === nome &&
+u.senha === senha
+);
+
+if(usuario){
+
+res.json({
+ok:true,
+msg:"Permitido"
+});
+
+}else{
+
+res.json({
+ok:false,
+msg:"Negado"
+});
+
+}
+
+});
+
+app.get("/perm", (req, res) => {
+
+res.json(permitidos);
+
+});
+
 
 
 
