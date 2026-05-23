@@ -190,6 +190,10 @@ let permitidos = [
 nome:"Julio Cesar",
 senha:"0947"
 },
+{
+nome:"Astra",
+senha:"2007"
+},
 ];
 
 app.post("/perm", (req, res) => {
