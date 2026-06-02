@@ -56,7 +56,7 @@ dados:posJ
 
 app.get("/julio",(req,res)=>{
 
-res.json(pos_julio)
+res.json(Object.keys(pos_julio));
 
 })
 ///////////////////////////////////////
