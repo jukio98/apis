@@ -35,14 +35,14 @@ res.json(jogadores_vacuo)
 })
 //////////poos_julio
 let pos_julio=[];
-
+let posJ={};
 app.post("/julio", (req, res) => {
 
-const { nome, localizacao } = req.body;
+const { info_a,info_b } = req.body;
 
 const posJ = {
-nome,
-localizacao
+info_a,
+info_b
 };
 
 pos_julio.push(posJ);
@@ -208,6 +208,15 @@ app.get("/perm", (req, res) => {
 res.json(permitidos);
 
 });
+////////////////////////////////////
+
+
+
+
+
+
+
+
 
 
 
