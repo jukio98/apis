@@ -35,30 +35,30 @@ res.json(jogadores_vacuo)
 })
 //////////poos_julio
 let pos_julio=[];
-let posJ={};
+
 app.post("/julio", (req, res) => {
 
-const { info_a,info_b } = req.body;
+const {info_a,info_b} = req.body;
 
 const posJ = {
-info_a,
-info_b
+  info_a,
+  info_b
 };
 
 pos_julio.push(posJ);
 
 res.json({
-ok:true,
-dados:posJ
-})
+  ok:true,
+  dados:posJ
+});
 
-})
+});
 
 app.get("/julio",(req,res)=>{
 
-res.json(Object.keys(pos_julio));
+res.json(pos_julio);
 
-})
+});
 ///////////////////////////////////////
 
 //////////mens_sivas
