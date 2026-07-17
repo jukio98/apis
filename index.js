@@ -72,33 +72,42 @@ app.get("/julio", (req, res) => {
 ///////////////////////////////////////
 
 //////////mens_sivas
-let mens_silvas=[];
-let mens={};
+let mens_silvas = [];
+
 app.post("/mens_silvas", (req, res) => {
 
-const {usuario,mensagem } = req.body;
+    const { usuario, mensagem } = req.body;
 
-const mens = {
-usuario,
-mensagem
-};
+    const mens = {
+        usuario,
+        mensagem,
+        criadoEm: Date.now()
+    };
 
-mens_silvas.push(mens);
+    mens_silvas.push(mens);
 
-res.json({
-ok:true,
-dados:mens
-})
+    // Remove mensagens com mais de 7 dias
+    mens_silvas = mens_silvas.filter(m =>
+        Date.now() - m.criadoEm < 7 * 24 * 60 * 60 * 1000
+    );
 
-})
+    res.json({
+        ok: true,
+        dados: mens
+    });
 
-app.get("/mens_silvas",(req,res)=>{
+});
 
-res.json(mens_silvas)
+app.get("/mens_silvas", (req, res) => {
 
-})
+    // Remove mensagens vencidas antes de enviar
+    mens_silvas = mens_silvas.filter(m =>
+        Date.now() - m.criadoEm < 7 * 24 * 60 * 60 * 1000
+    );
 
+    res.json(mens_silvas);
 
+});
 
 //////////ONLINE_MENS_SILVAS///
 let online_mens = {};
