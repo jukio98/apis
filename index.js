@@ -34,29 +34,39 @@ res.json(jogadores_vacuo)
 
 })
 //////////poos_julio
-let pos_julio=[];
+let pos_julio = [];
+
+const UMA_SEMANA = 7 * 24 * 60 * 60 * 1000; // 7 dias em ms
 
 app.post("/julio", (req, res) => {
 
-const {info_a,info_b} = req.body;
+    const { info_a, info_b } = req.body;
 
-const posJ = {
-  info_a,
-  info_b
-};
+    const posJ = {
+        info_a,
+        info_b,
+        criadoEm: Date.now()
+    };
 
-pos_julio.push(posJ);
+    pos_julio.push(posJ);
 
-res.json({
-  ok:true,
-  dados:posJ
+    res.json({
+        ok: true,
+        dados: posJ
+    });
+
 });
 
-});
+app.get("/julio", (req, res) => {
 
-app.get("/julio",(req,res)=>{
+    const agora = Date.now();
 
-res.json(pos_julio);
+    // Remove os registros com mais de 7 dias
+    pos_julio = pos_julio.filter(item =>
+        (agora - item.criadoEm) < UMA_SEMANA
+    );
+
+    res.json(pos_julio);
 
 });
 ///////////////////////////////////////
